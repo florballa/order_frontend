@@ -1,0 +1,63 @@
+<h1 class="order-form-welcome">Welcome to register order form!</h1>
+
+<div class="order-form" [formGroup]="orderFormGroup">
+
+
+  <mat-form-field class="order-form" appearance="fill">
+    <mat-label>Costumer</mat-label>
+    <mat-select formControlName="costumer" required>
+      <mat-option *ngFor="let item of costumers" [value]="item.id">
+        {{item.first_name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <!--  ORDER UNIT INSIDE ORDER FORM-->
+  <div formArrayName="order_units">
+    <div *ngFor="let control of orderFormGroup.get('order_units')['controls']; let i = index;">
+      <div [formGroupName]="i">
+        <mat-form-field class="order-form" appearance="fill">
+          <mat-label>Product</mat-label>
+          <mat-select formControlName="product" (selectionChange)="getPrice(control)" required>
+            <mat-option *ngFor="let item of products" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="order-form" appearance="fill">
+          <mat-label>Amount:</mat-label>
+          <input formControlName="amount" (change)="getTotal()" matInput placeholder="" type="number" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Price:</mat-label>
+          <input formControlName="default_price" matInput type="number" disabled="True">
+          <span matPrefix>$&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+
+        <button class="material-icons" type="button" (click)="removeOrderUnit(i)">highlight_off</button>
+      </div>
+    </div>
+    <button class="material-icons" type="button" (click)="addOrderUnit()">add_task</button>
+  </div>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Total:</mat-label>
+    <input formControlName="total" matInput disabled="True">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <br>
+
+  <button mat-raised-button color="primary" (click)="saveOrder()">Add Order!</button>
+
+
+</div>
+

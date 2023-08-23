@@ -1,0 +1,51 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--  Id Column-->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id.</th>
+    <td mat-cell *matCellDef="let order"> {{order.id}} </td>
+  </ng-container>
+
+  <!-- Code Column -->
+  <ng-container matColumnDef="code">
+    <th mat-header-cell *matHeaderCellDef>Order Code</th>
+    <td mat-cell *matCellDef="let order"> {{order.code}}</td>
+  </ng-container>
+
+  <!-- Code Year Column -->
+  <ng-container matColumnDef="code_year">
+    <th mat-header-cell *matHeaderCellDef>Code Year</th>
+    <td mat-cell *matCellDef="let order">{{order.code_year}}</td>
+  </ng-container>
+
+  <!-- Date Registered Column -->
+  <ng-container matColumnDef="date_registered">
+    <th mat-header-cell *matHeaderCellDef> Date Registered</th>
+    <td mat-cell *matCellDef="let order"> {{order.date_registered}} </td>
+  </ng-container>
+
+  <!-- Costumer Id Column -->
+  <ng-container matColumnDef="costumer_id">
+    <th mat-header-cell *matHeaderCellDef> Costumer Id</th>
+    <td mat-cell *matCellDef="let order"> {{order.costumer}} </td>
+  </ng-container>
+
+  <!-- Update Column -->
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef> Update</th>
+    <td mat-cell *matCellDef="let order">
+      <button mat-raised-button color="primary" (click)="navigateToOrderForm(order.id)">Update</button>
+    </td>
+  </ng-container>
+
+  <!-- Delete Column -->
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete</th>
+    <td mat-cell *matCellDef="let order">
+      <button mat-raised-button color="warn" (click)="deleteOrder(order.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,16 @@
+<h1 class="product-form-welcome">Welcome to register products category form!</h1>
+
+<div class="category-form" [formGroup]="categoryFormGroup">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Product Category name:</mat-label>
+    <input formControlName="name" matInput placeholder="Electronics" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <button mat-raised-button color="primary" (click)="saveCategory()">Add Product Category!</button>
+
+
+</div>
+

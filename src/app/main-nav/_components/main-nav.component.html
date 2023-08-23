@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+
+                    <!--      USERS MENU     -->
+      <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="agents/list">List</button>
+        <button mat-menu-item routerLink="agents/form">Form</button>
+      </mat-menu>
+
+                    <!--      COSTUMERS MENU     -->
+      <button mat-button [matMenuTriggerFor]="costumerMenu">Costumers</button>
+      <mat-menu #costumerMenu="matMenu">
+        <button mat-menu-item routerLink="agents/costumers-list">List</button>
+        <button mat-menu-item routerLink="agents/costumer-form">Form</button>
+      </mat-menu>
+
+                    <!--      ORDERS MENU     -->
+      <button mat-button [matMenuTriggerFor]="orderMenu">Orders</button>
+      <mat-menu #orderMenu="matMenu">
+        <button mat-menu-item routerLink="orders/list">List</button>
+        <button mat-menu-item routerLink="orders/form">Form</button>
+      </mat-menu>
+
+                    <!--      PRODUCTS MENU     -->
+      <button mat-button [matMenuTriggerFor]="productMenu">Products</button>
+      <mat-menu #productMenu="matMenu">
+        <button mat-menu-item routerLink="products/list">List</button>
+        <button mat-menu-item routerLink="products/form">Form</button>
+      </mat-menu>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Order Application</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

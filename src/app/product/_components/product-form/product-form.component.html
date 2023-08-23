@@ -1,0 +1,40 @@
+<h1 class="product-form-welcome">Welcome to register product form!</h1>
+
+<div class="product-form" [formGroup]="productFormGroup">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Product name:</mat-label>
+    <input formControlName="name" matInput placeholder="Apple" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Price:</mat-label>
+    <input formControlName="default_price" matInput placeholder="$12" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description:</mat-label>
+    <input formControlName="description" matInput placeholder="Fruit" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Kategoria</mat-label>
+    <mat-select formControlName="categories" required multiple>
+      <mat-option *ngFor="let item of categories" [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <button mat-raised-button color="primary" (click)="saveProduct()">Save</button>
+
+
+</div>

@@ -1,0 +1,29 @@
+<h1 class="agent-form-welcome">Welcome to register form!</h1>
+
+<div class="agent-form" [formGroup]="costumerFormGroup">
+
+  <mat-form-field appearance="fill">
+    <mat-label>First name:</mat-label>
+    <input formControlName="first_name" matInput placeholder="John" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name:</mat-label>
+    <input formControlName="last_name" matInput placeholder="Smith" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Company Name:</mat-label>
+    <input formControlName="company_name" matInput placeholder="" type="text" required>
+  </mat-form-field>
+
+  <br>
+
+  <button mat-raised-button color="primary" (click)="saveCostumer()">Register now!</button>
+
+
+</div>
